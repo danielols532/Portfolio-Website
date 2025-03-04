@@ -36,11 +36,21 @@ header {
     overflow: hidden;
     position: fixed;
     top: 0;
+    z-index: 1;
 }
-.clickable-container{
+
+.clickable-container {
     display: flex;
 }
 
+.h1-container {
+    position: relative;
+    display: inline-block;
+    min-width: 215px;
+    text-align: center;
+}
+
+/* Hidden input, covering the entire clickable area */
 input {
     opacity: 0;
     position: absolute;
@@ -52,14 +62,7 @@ input {
     cursor: pointer;
 }
 
-.h1-container {
-    position: relative;
-    display: inline-block;
-    padding-right: 0px;
-    min-width: 15rem;
-    text-align: center;
-}
-
+/* Circle background effect */
 .h1-container::before {
     content: '';
     position: absolute;
@@ -67,11 +70,13 @@ input {
     height: 31.25rem;
     background: #222;
     border-radius: 100%;
-    transition: all 500ms cubic-bezier(1, 0.885, 0.32, 1);
+    transition: transform 0.5s cubic-bezier(1, 0.885, 0.32, 1);
     transform: scale(4);
     left: calc(50% - 15.625rem);
     top: calc(50% - 15.625rem);
 }
+
+/* Click me text */
 .h1-container::after {
     content: 'Click me!';
     position: absolute;
@@ -84,6 +89,7 @@ input {
     transition: opacity 0.3s ease;
 }
 
+/* Main heading (shown first) */
 #main-h1 {
     font-family: 'Eroded', sans-serif;
     color: #fff;
@@ -92,38 +98,45 @@ input {
     position: relative;
     top: 2.5rem;
     transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-    
 }
 
+/* Hidden heading (starts large and above, then drops down) */
 #switch-h1 {
+    display: block;
     font-family: 'Eroded', sans-serif;
     font-size: 5rem;
     color: #fff;
     position: relative;
+    top: -3rem;
     opacity: 0;
-    top: -2.5rem;
-    transform: translateY(-20rem) scale(2);
+    transform: scale(4); 
     transition: transform 0.8s ease-out, opacity 0.8s ease-out;
 }
 
-input:checked ~ .h1-container #main-h1 {
+/* When input is checked: Hide main text */
+input:checked + .h1-container #main-h1 {
     opacity: 0;
+    transform: scale(0.1);
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
 }
 
-input:checked ~ .h1-container #switch-h1 {
+/* When input is checked: Show new text with drop-down effect */
+input:checked + .h1-container #switch-h1 {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
 }
 
-input:checked ~ .h1-container::before {
+/* Shrink circle background */
+input:checked + .h1-container::before {
     transform: scale(1);
     transition-delay: 0.2s;
 }
-input:checked ~ .h1-container::after {
-    opacity: 0;
-    
-}
 
+/* Hide "Click me" text */
+input:checked + .h1-container::after {
+    opacity: 0;
+}
 
 /* Title Styles */
 h2 {
