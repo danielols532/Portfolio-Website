@@ -11,7 +11,15 @@
     <body>
 
         <header>
-            <h1>Daniel Olsson - My Personal Portfolio</h1>
+            <div class="clickable-container">
+                <input type="checkbox" id="h1-toggle"/>
+                <div class="h1-container">
+                    <h1 id="main-h1">My Personal Portfolio</h1>
+                    <span id="switch-h1">Daniel Olsson</span>
+                </div>
+            </div>
+           
+            
             <!--Add image/logo or something similar-->
 
             <nav>
@@ -47,11 +55,30 @@
                  </article>
                  <article class="about-article">
                     <h3>Hobbies</h3>
+                    <div class="horizontal-container">
+                        <div class="hobby">
+                            <img src="images/hobby.png" alt="Image of programming">
+                            <p>Programming</p>
+                        </div>
+                        <div class="hobby">
+                            <img src="images/hobby.png" alt="Image of padel">
+                            <p>Padel</p>
+                        </div>
+                        <div class="hobby">
+                            <img src="images/hobby.png" alt="Image of deadlift">
+                            <p>Strength Training</p>
+                        </div>
+                        <div class="hobby">
+                            <img src="images/hobby.png" alt="Image of a person gaming">
+                            <p>Gaming</p>
+                        </div>
+                    </div>
                  </article>
             </section>
             <section id="projects">
                 <h2>Projects</h2>
                 <!-- Add different projects that I am proud of and want to show off -->
+                <!-- Add published work via ResearchGate or other -->
                 <!-- Is it possible to have images of a project as a link to the actual project (Not for past projects but for future ones that are deployed as websites) -->
             </section>
             <section id="skills">
